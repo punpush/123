@@ -1,12 +1,15 @@
 cmake_minimum_required(VERSION 3.0)
 
-project (exampleProject)
+project (textCounter)
 
+set(CMAKE_AUTOMOC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 file(GLOB_RECURSE  SOURCE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/include/*.h )
 
-find_package(Qt5 REQUIRED COMPONENTS Core Gui Widgets)
+find_package(Qt5 REQUIRED COMPONENTS Core Gui Widgets Quick)
+
+qt5_add_resources(SOURCE_FILES qml.qrc)
 
 add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
 
@@ -18,8 +21,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/i
 target_link_libraries(
     ${PROJECT_NAME}
     Qt5::Core
-    Qt5::Gui
-    Qt5::Widgets
+    Qt5::Quick
 )
 
 include("unittest.cmake")
