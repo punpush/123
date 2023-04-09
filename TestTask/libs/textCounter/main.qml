@@ -128,6 +128,6 @@ Window {
         selectMultiple: false
         selectExisting: false
         nameFilters: [ qsTr("bin-файл (*.bin)") ]
-        onAccepted: backend.openFile(fileDialogForPath.fileUrl)
+        onAccepted: backend.openFile(fileDialogForOpenPath.fileUrl)
     }
 }
